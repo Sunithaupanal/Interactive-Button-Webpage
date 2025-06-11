@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyze String</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            width: 300px;
+        }
+        .output {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: left;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>String Analyzer</h1>
+    <input type="text" id="inputString" placeholder="Enter a string to analyze">
+    <br>
+    <button onclick="handleAnalyze()">Analyze</button>
+
+    <div class="output" id="resultOutput"></div>
+
+    <script>
+        function analyzeString(input) {
+            const lowerCase = input.toLowerCase();
+            const upperCase = input.toUpperCase();
+            const containsJavaScript = lowerCase.includes("javascript");
+            const aCount = lowerCase.split('').filter(char => char === 'a').length;
+
+            return {
+                length: input.length,
+                lowercase: lowerCase,
+                uppercase: upperCase,
+                containsJavaScript: containsJavaScript,
+                aCount: aCount
+            };
+        }
+
+        function handleAnalyze() {
+            const input = document.getElementById('inputString').value;
+            const result = analyzeString(input);
+
+            document.getElementById('resultOutput').innerHTML = `
+                <p><strong>Length:</strong> ${result.length}</p>
+                <p><strong>Lowercase:</strong> ${result.lowercase}</p>
+                <p><strong>Uppercase:</strong> ${result.uppercase}</p>
+                <p><strong>Contains "JavaScript":</strong> ${result.containsJavaScript}</p>
+                <p><strong>Occurrences of 'a':</strong> ${result.aCount}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
