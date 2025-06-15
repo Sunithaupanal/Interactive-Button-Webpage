@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Array Operations</title>
+</head>
+<body>
+  <h2>JavaScript Array Operations Output</h2>
+  <pre id="output"></pre>
+
+  <script>
+    let output = "";
+
+    // Initialize Array
+    let numbers = [10, 5, 8, 3, 12, 6];
+    output += "Original Array: " + numbers + "\n"; 
+
+    // Print Length
+    output += "Length of the array: " + numbers.length + "\n"; 
+
+    // Add Element
+    numbers.push(7);
+    output += "After adding 7 to the end: " + numbers + "\n";
+
+    // Remove first element
+    numbers.shift();
+    output += "After removing first element: " + numbers + "\n";
+
+    // Sort in ascending order
+    numbers.sort((a, b) => a - b);
+    output += "Sorted in ascending order: " + numbers + "\n";
+
+    // Reverse the array
+    numbers.reverse();
+    output += "Reversed array: " + numbers + "\n";
+
+    // Check if 8 exists
+    if (numbers.includes(8)) {
+      output += "Number 8 exists\n";
+    } else {
+      output += "Number 8 doesn't exist\n";
+    }
+
+    // Find index of number 12
+    let indexOf12 = numbers.indexOf(12);
+    output += "Index of number 12: " + indexOf12 + "\n";
+
+    // Create a new array by doubling each number
+    let doubledNumbers = numbers.map(num => num * 2);
+    output += "Doubled Numbers Array: " + doubledNumbers + "\n";
+
+    // Display the output
+    document.getElementById("output").textContent = output;
+  </script>
+</body>
+</html>
