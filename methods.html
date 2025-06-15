@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Manipulation Task</title>
+</head>
+<body>
+    <h1>Array Manipulation Task</h1>
+    
+    <div id="output" class="output">
+        <!-- JavaScript output will appear here -->
+    </div>
+
+    <script>
+        // Function to display output in the HTML page
+        function displayOutput(message) {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML += message + '<br>';
+        }
+
+        // Clear previous output
+        document.getElementById('output').innerHTML = '';
+        
+        // 1. Initialize the array
+        const names = ["John", "Jane", "Doe", "Alice", "Bob"];
+        displayOutput("<strong>Initial array:</strong> " + names.join(', '));
+
+        // 2. Print all names to console, each on a new line
+        displayOutput("<strong>Original names:</strong>");
+        names.forEach(name => displayOutput(name));
+
+        // 3. Add "Eve" to the end of the array
+        names.push("Eve");
+        displayOutput("<strong>After adding Eve to the end:</strong> " + names.join(', '));
+
+        // 4. Remove "Doe" from the array
+        const doeIndex = names.indexOf("Doe");
+        if (doeIndex !== -1) {
+            names.splice(doeIndex, 1);
+        }
+        displayOutput("<strong>After removing Doe:</strong> " + names.join(', '));
+
+        // 5. Sort the array in alphabetical order
+        names.sort();
+        displayOutput("<strong>After sorting:</strong> " + names.join(', '));
+
+        // 6. Check if "Alice" exists in the array
+        const aliceExists = names.includes("Alice");
+        displayOutput(`<strong>Alice is ${aliceExists ? "present" : "not present"}</strong>`);
+
+        // 7. Convert all names to uppercase in a new array
+        const uppercaseNames = names.map(name => name.toUpperCase());
+        displayOutput("<strong>Uppercase names array:</strong> " + uppercaseNames.join(', '));
+
+        // 8. Print the uppercaseNames array to console (also visible in browser console)
+        console.log("Uppercase names:", uppercaseNames);
+    </script>
+</body>
+</html>
