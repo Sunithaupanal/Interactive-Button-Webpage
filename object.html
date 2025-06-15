@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Object, Set, and Map Operations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h2 {
+      color: #2E8B57;
+    }
+    pre {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #2E8B57;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript Task</h2>
+  <pre id="output"></pre>
+
+  <script>
+    let output = "";
+
+    // Object Creation
+    function createPerson(name, age, gender, occupation) {
+      return { name, age, gender, occupation };
+    }
+
+    const person1 = createPerson("Alice", 28, "Female", "Engineer");
+    const person2 = createPerson("Bob", 35, "Male", "Designer");
+
+    output += "Person 1: " + JSON.stringify(person1) + "\n";
+    output += "Person 2: " + JSON.stringify(person2) + "\n\n";
+
+    // Set Operations
+
+    // Task 1: Create unique set from array
+    function uniqueSet(arr) {
+      return new Set(arr);
+    }
+
+    const nums = [1, 2, 2, 3, 4, 4, 5];
+    const uniqueNums = uniqueSet(nums);
+    output += "Unique Set: " + JSON.stringify(Array.from(uniqueNums)) + "\n\n";
+
+    // Task 2: Union, Intersection, Difference
+    function union(setA, setB) {
+      return new Set([...setA, ...setB]);
+    }
+
+    function intersection(setA, setB) {
+      return new Set([...setA].filter(x => setB.has(x)));
+    }
+
+    function difference(setA, setB) {
+      return new Set([...setA].filter(x => !setB.has(x)));
+    }
+
+    const setA = new Set([1, 2, 3]);
+    const setB = new Set([3, 4, 5]);
+
+    output += "Union: " + JSON.stringify(Array.from(union(setA, setB))) + "\n";
+    output += "Intersection: " + JSON.stringify(Array.from(intersection(setA, setB))) + "\n";
+    output += "Difference (A - B): " + JSON.stringify(Array.from(difference(setA, setB))) + "\n\n";
+
+    // Task 3: Subset check
+    function isSubset(subset, superset) {
+      for (let item of subset) {
+        if (!superset.has(item)) return false;
+      }
+      return true;
+    }
+
+    const smallSet = new Set([1, 2]);
+    const largeSet = new Set([1, 2, 3, 4]);
+    output += "Is smallSet a subset of largeSet? " + isSubset(smallSet, largeSet) + "\n\n";
+
+    // Map Operations
+    const myMap = new Map();
+    myMap.set("name", "Charlie");
+    myMap.set("age", 40);
+    myMap.set("city", "Bangalore");
+
+    // Access
+    output += "Map - Name: " + myMap.get("name") + "\n";
+
+    // Update
+    myMap.set("age", 41);
+    output += "Map - Updated Age: " + myMap.get("age") + "\n";
+
+    // Delete
+    myMap.delete("city");
+    output += "Map after deleting 'city': " + JSON.stringify(Object.fromEntries(myMap)) + "\n";
+
+    // Display all output
+    document.getElementById("output").textContent = output;
+  </script>
+
+</body>
+</html>
