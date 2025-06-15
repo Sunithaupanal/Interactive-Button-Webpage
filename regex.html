@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Html</title>
+</head>
+<body>
+    <h2>A Javascript example</h2>
+    <p id="demo"></p>
+    <button type="button" onclick="myFunc()">click me!</button>
+
+    <script>
+        function myFunc() {
+            // Creating Dates
+            const currentDate = new Date();
+            // Specific date and time
+            const specificDate = new Date('2024-04-15T12:00:00');
+            // Using milliseconds since the Unix Epoch
+            const usingMS = new Date(1619743444000);
+
+            // Access Date Component
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const day = date.getDay();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+
+            // Format
+            const formattedDate = date.toLocaleDateString('en-US'); 
+            
+            // Manipulate dates
+            date.setDate(date.getDate() + 7);
+            // Compare dates
+            const date1 = new Date('2024-04-29');
+            const date2 = new Date('2024-05-05');
+    
+            if (date1 < date2) {
+                console.log("date 1 is earlier than date 2");
+            }
+        
+            // Regex
+            // 1. Literal Characters => '/hello/'
+            // 2. Character classes [aeiou]
+            // 3. Quantifiers
+            //    + => matches one or more occurrences
+            //    * => matches zero or more occurrences
+            //    ? => matches zero or one occurrence
+            // 4. Anchors
+            //    '^' => matches beginning of the string
+            //    '$' => matches the end
+            // 5. Modifiers
+            //    'i' => matches the case-sensitive
+            //    'g' => performs global match
+            let pattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let string = "myemail@glutimez.com";
+            console.log(pattern.test(string));
+            
+        }
+    </script>
+</body>
+</html>
