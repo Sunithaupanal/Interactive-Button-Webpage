@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator with Callback</title>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+
+    <label>Enter First Number:</label>
+    <input type="number" id="num1"><br><br>
+
+    <label>Enter Second Number:</label>
+    <input type="number" id="num2"><br><br>
+
+    <label>Select Operation:</label>
+    <select id="operation">
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="multiply">Multiply</option>
+        <option value="divide">Divide</option>
+    </select><br><br>
+
+    <button onclick="performCalculation()">Calculate</button>
+
+    <p><strong>Result:</strong> <span id="result"></span></p>
+
+    <script>
+        // Define the calculate function
+        function calculate(num1, num2, operation, callback) {
+            let result;
+
+            switch (operation) {
+                case "add":
+                    result = num1 + num2;
+                    break;
+                case "subtract":
+                    result = num1 - num2;
+                    break;
+                case "multiply":
+                    result = num1 * num2;
+                    break;
+                case "divide":
+                    if (num2 === 0) {
+                        return callback("Error: Division by zero", null);
+                    }
+                    result = num1 / num2;
+                    break;
+                default:
+                    return callback("Error: Invalid operation", null);
+            }
+
+            callback(null, result);
+        }
+
+        // Callback to display the result
+        function displayResult(error, result) {
+            const resultElement = document.getElementById('result');
+            if (error) {
+                resultElement.textContent = error;
+            } else {
+                resultElement.textContent = result;
+            }
+        }
+
+        // Perform calculation on button click
+        function performCalculation() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
+
+            calculate(num1, num2, operation, displayResult);
+        }
+    </script>
+</body>
+</html>
